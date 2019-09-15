@@ -1,0 +1,42 @@
+# TODO change it to config yml or other
+
+VGGConfig:
+  MODEL:
+    PRETRAINED: true
+    USE_RNN: true
+    INIT_RNN: false
+
+  ANCHOR_HEAD:
+    CNN_NAME: 'VGG_16'
+    NUM_CLASS: 2
+    ANCHOR_EXTRACTOR: 'C4'  # C4 is 16 step
+    CNN_OUTPUT_CHANNEL: 512
+    RNN_OUTPUT_CHANNEL: 256
+    STRIDE: 16  # feature map is 1/16 of original image
+  PIXEL_HEAD:
+    PIXEL_PREDICTION: flase
+  DATA:
+    SIZE_DIVISIBILITY: 0
+
+PSENetConfig:
+  MODEL:
+    PRETRAINED: true
+    USE_RNN: true
+    INIT_RNN: true
+  ANCHOR_HEAD:
+    CNN_NAME: 'resnet101'
+    NUM_CLASS: 2
+    #    ANCHOR_EXTRACTOR: 'C4'
+    #    CNN_OUTPUT_CHANNEL: 1024
+    ANCHOR_EXTRACTOR: 'P3'
+    CNN_OUTPUT_CHANNEL: 256
+    RNN_OUTPUT_CHANNEL: 256
+    STRIDE: 8
+  PIXEL_HEAD:
+    Fusion: true # fusion : fusion like psenet , otherwise use p2
+    SCALE_RATIO: 0.25
+    PIXEL_PREDICTION: true
+    CORNER_PREDICTION: false
+  DATA:
+    SIZE_DIVISIBILITY: 16
+    

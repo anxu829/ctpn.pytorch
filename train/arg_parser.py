@@ -1,0 +1,22 @@
+import argparse
+
+parser = argparse.ArgumentParser(description='PyTorch RetinaNet Training')
+parser.add_argument('--lr', default=1e-4, type=float, help='learning rate')
+parser.add_argument('--input_size_min', default=1024, type=int, help='Input size for training')
+parser.add_argument('--input_size_max', default=1600, type=int, help='Input size for training')
+parser.add_argument('--batch_size', default=3, type=int, help='Batch size for training')
+parser.add_argument('--num_workers', default=15, type=int, help='Number of workers used in dataloading')
+parser.add_argument('--resume', default=None, type=str, help='resume from checkpoint')
+# parser.add_argument('--resume', default='/disk3/xuan/detection/ctpn/medical_res/ckpt_medical_best.pth', type=str,
+#                     help='resume from checkpoint')
+parser.add_argument('--multi_scale', action='store_true', help='Use multi-scale training')
+parser.add_argument('--logdir', default='logs/', type=str, help='Tensorboard log dir')
+parser.add_argument('--max_iter', default=1200000, type=int, help='Number of training iterations')
+parser.add_argument('--gamma', default=0.5, type=float, help='Gamma update for SGD')
+parser.add_argument('--save_interval', default=10000, type=int, help='Location to save checkpoint models')
+parser.add_argument('--save_folder', default='eval/', help='Location to save checkpoint models')
+parser.add_argument('--evaluation', action='store_true', help='Evaulation during training')
+parser.add_argument('--eval_step', default=1000, type=int, help='Evauation step')
+parser.add_argument('--eval_device', default=6, type=int, help='GPU device for evaluation')
+parser.add_argument('--model', default='pse', type=str)
+args = parser.parse_args()
